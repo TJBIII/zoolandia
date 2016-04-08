@@ -153,6 +153,11 @@ public class Canis : Genus {
 public class Felis : Genus {
   public bool bigCat { get; set; }
   public bool striped { get; set; }
+
+  // bad practice to have a constructor at this level?
+  public Felis {
+    bigCat = true;
+  }
 }
 
 
@@ -293,11 +298,20 @@ public class CherryShrimp : Shrimp
     defense = "hiding";
     color = "red";
   }
+
+  public CherryShrimp (string colorStr)
+  {
+    consumption = "Omnivore";
+    depthFound = 100;
+    defense = "hiding";
+    color = colorStr;
+
+  }
 }
 
 public class WindowWashingShrimp : Shrimp
 {
-  public int cleaningPower = 9000;
+  public int cleaningPower = 9001;
 
   public WindowWashingShrimp (float depth)
   {
