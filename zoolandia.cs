@@ -322,3 +322,104 @@ public class WindowWashingShrimp : Shrimp
 }
 
 CherryShrimp karl = new CherryShrimp(100);
+
+
+
+
+/////////////// Inheritance, composition, aggregation /////////////////
+public class Animal {
+  public string animalName { get; set; }
+  public double speed { get; set; }  
+  public string color { get; set; }
+
+  private string _consumption = "";
+
+  public string consumption
+  {
+    get
+    {
+      return _consumption;
+    }
+
+    set
+    {
+      if (value == "Omnivore" || value == "Carnivore" || value == "Herbivore")
+      {
+        _consumption = value;
+      }
+    }
+  }   
+
+
+  private Species _species;
+
+  public Species species
+  {
+    get
+    {
+      return _species;
+    }
+    set
+    {
+      _species = value;
+    }
+  }
+}
+
+
+
+class TaxonomyTerm
+{
+  public string url {get; set;}
+  public string trait {get; set;}
+  public string scientificName {get; set;}
+  public string commonName {get; set;}
+}
+
+
+class Genus : TaxonomyTerm
+{
+
+}
+
+class Species : TaxonomyTerm
+{
+  private Genus _genus;
+
+  public Genus genus
+  {
+    get
+    {
+      return _genus;
+    }
+
+    set
+    {
+      _genus = value;
+    }
+  }
+
+}
+
+
+
+public class Canis : Genus {
+  public bool domesticated { get; set; }
+  public int legs = 4;
+
+  public virtual void walk () {
+        Console.WriteLine("Canis class walk method speed", speed);
+        speed = speed + (0.1 * legs);
+    }
+}
+
+
+
+// canis species
+public class Dog : Species {
+  public Dog ()
+  {
+    this.url = "";
+    this.genus = 
+  }
+}
